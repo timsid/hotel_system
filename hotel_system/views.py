@@ -20,7 +20,7 @@ def InitializeData(request):
     customer2 = Customer('SomeOne Dead', "+2001143647417")
 
     # init reservation
-    new_reserv = Reservation(22, 'Five', customer1.name)
+    reserv = Reservation()
     # init notification
     notify = Notification()
 
