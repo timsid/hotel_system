@@ -1,7 +1,10 @@
 class Hotel:
     hotels_list = []
 
-    def __init__(self, number, hotel_name, city, total_rooms, empty_rooms):
+    def __init__(self):
+        pass
+        
+    def add_hotel(self, number, hotel_name, city, total_rooms, empty_rooms):
         self.hotel_id = number
         self.name = hotel_name
         self.city = city

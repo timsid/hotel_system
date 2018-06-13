@@ -19,6 +19,6 @@ from .views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'hello_world', HelloWorld),
-    url(r"", WelcomePage)
+    #url(r'allhotels', HotelList),
+    url(r'', InitializeData),
 ]
