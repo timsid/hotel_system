@@ -35,8 +35,7 @@ def InitializeData(request):
             mes = "<h3 style='color: green'>"
             mes += notify.success_opr(customer1.name, customer1.phone_number, start_date, end_date)
             # bonus message
-            mes += "<br /><br />Refresh page to add more reservations"
-            mes += "</h3>"
+            mes += "</h3><h4>Refresh page to add more reservations</h4>"
     else:
         mes = "<h1 style='color: red'>sorry no rooms available</h1>"
     
@@ -50,10 +49,10 @@ def HotelList(request):
     # you told me to use instance directly not an function
     hotel_list = hotel.hotels_list
     
-    hotel_list_output = "<ul>"
+    hotel_list_output = "<h4><ul>"
     for h in hotel_list:
         hotel_list_output += "<li>" + h['name'] + "</li>"
-    hotel_list_output += "</ul>"
+    hotel_list_output += "</ul></h4>"
     return HttpResponse(hotel_list_output)
 
 def HotelInCity(request):
@@ -64,10 +63,10 @@ def HotelInCity(request):
     # select any city
     hotels_in_city = hotel.get_hotels_in_city('Abu Dhabi')
 
-    output_list = '<ul>'
+    output_list = '<h4><ul>'
     for h in hotels_in_city:
         output_list += "<li>" + h + "</li>"
-    output_list += "</ul>"
+    output_list += "</ul></h4>"
     return HttpResponse(output_list)
 
 def ReservationList(request):
@@ -80,10 +79,10 @@ def ReservationList(request):
     # any hotel
     reservation_list = reserv.get_resevrations_for_hotel(22, customer.customers_list)
 
-    output_list = "<ul>"
+    output_list = "<h4><ul>"
     for r in reservation_list:
         output_list += "<li>" + r + "</li>"
-    output_list += '</ul>'
+    output_list += '</ul></h4>'
 
     return HttpResponse(output_list)
 
