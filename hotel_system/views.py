@@ -16,15 +16,29 @@ def InitializeData(request):
     return HttpResponse("<h2>Data Initialized<h2>")
 
 def HotelList(request):
-    # get all hotels
-    rotana_hotel = Hotel()
+    """ show list of all saved hotels """
+    hotel = Hotel()
 
     # hotel.get_all_hotels()
     # you told me to use instance directly not an function
-    hotel_list = rotana_hotel.hotels_list
+    hotel_list = hotel.hotels_list
     
     hotel_list_output = "<ul>"
     for h in hotel_list:
         hotel_list_output += "<li>" + h['name'] + "</li>"
     hotel_list_output += "</ul>"
     return HttpResponse(hotel_list_output)
+
+def HotelInCity(request):
+    """ Show list of all hotels in an city """
+
+    hotel = Hotel()
+    
+    # select any city
+    hotels_in_city = hotel.get_hotels_in_city('Abu Dhabi')
+
+    output_list = '<ul>'
+    for h in hotels_in_city:
+        output_list += "<li>" + h + "</li>"
+    output_list += "</ul>"
+    return HttpResponse(output_list)

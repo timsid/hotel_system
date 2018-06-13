@@ -3,7 +3,7 @@ class Hotel:
 
     def __init__(self):
         pass
-        
+
     def add_hotel(self, number, hotel_name, city, total_rooms, empty_rooms):
         self.hotel_id = number
         self.name = hotel_name
@@ -20,14 +20,14 @@ class Hotel:
             "empty_rooms" : self.empty_rooms
         })
     
-    def get_hotels_in_city(self):
+    def get_hotels_in_city(self, city):
         """search for city in hotels list and print hotel name, total number of rooms if found """
         hotels_in_city = []
         for hotel in self.hotels_list:
-            if hotel['city'] == self.city:
-                mes = '{id} ->>> {name} has {total_rooms} total rooms'.format(id= hotel['id'], name= hotel['name'], total_rooms = hotel['total_rooms'])
-                hotels_in_city.append(mes)
-        return "\n".join(hotels_in_city)
+            if hotel['city'] == city:
+                """mes = '{id} ->>> {name} has {total_rooms} total rooms'.format(id= hotel['id'], name= hotel['name'], total_rooms = hotel['total_rooms'])"""
+                hotels_in_city.append(hotel['name'])
+        return hotels_in_city
     
     def get_empty_rooms_in_hotel(self):
         for hotel in self.hotels_list:
