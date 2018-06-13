@@ -21,7 +21,7 @@ class Notification:
         mes = 'Successfully reserved room to: {name} From: {start} To {end}'.format(name= customer_name, start= str_date, end= end_date)
         return mes
         
-        self.send_sms(phone_number, mes)
+        #self.send_sms(phone_number, mes)
         
 
     

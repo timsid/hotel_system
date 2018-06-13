@@ -29,8 +29,8 @@ class Hotel:
                 hotels_in_city.append(hotel['name'])
         return hotels_in_city
     
-    def get_empty_rooms_in_hotel(self):
+    def get_empty_rooms_in_hotel(self, hotel_id):
         for hotel in self.hotels_list:
-            if hotel['id'] == self.hotel_id:
+            if hotel['id'] == hotel_id:
                 return hotel['empty_rooms']
             
