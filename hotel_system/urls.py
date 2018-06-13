@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'allhotels', HotelList),
     url(r'hotelincity', HotelInCity),
+    url(r'reservationlist', ReservationList),
     url(r'', InitializeData),
 ]

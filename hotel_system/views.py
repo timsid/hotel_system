@@ -31,7 +31,7 @@ def InitializeData(request):
         start_date = "22-5-2012"
         end_date = "20-3-2015"
 
-        if(new_reserv.add_new_reservation(22, hotel.hotels_list, customer_id, start_date, end_date)):
+        if(reserv.add_new_reservation(22, hotel.hotels_list, customer_id, start_date, end_date)):
             mes = "<h3 style='color: green'>"
             mes += notify.success_opr(customer1.name, customer1.phone_number, start_date, end_date)
             # bonus message
@@ -43,7 +43,7 @@ def InitializeData(request):
     return HttpResponse(mes)
 
 def HotelList(request):
-    """ show list of all saved hotels """
+    """ Return list of all saved hotels """
     hotel = Hotel()
 
     # hotel.get_all_hotels()
@@ -57,7 +57,7 @@ def HotelList(request):
     return HttpResponse(hotel_list_output)
 
 def HotelInCity(request):
-    """ Show list of all hotels in an city """
+    """ Return list of all hotels in an city """
 
     hotel = Hotel()
 
@@ -69,3 +69,21 @@ def HotelInCity(request):
         output_list += "<li>" + h + "</li>"
     output_list += "</ul>"
     return HttpResponse(output_list)
+
+def ReservationList(request):
+    """ Return all reservations for a hotel """
+    reserv = Reservation()
+    # this will add an empty customer
+    # but the function will return the right customer
+    customer = Customer('', '')
+
+    # any hotel
+    reservation_list = reserv.get_resevrations_for_hotel(22, customer.customers_list)
+
+    output_list = "<ul>"
+    for r in reservation_list:
+        output_list += "<li>" + r + "</li>"
+    output_list += '</ul>'
+
+    return HttpResponse(output_list)
+
