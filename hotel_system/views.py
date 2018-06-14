@@ -20,7 +20,7 @@ def InitializeData(request):
     customer2 = Customer('SomeOne Dead', "+2001143647417")
 
     # init reservation
-    new_reserv = Reservation(22, 'Five', customer1.name)
+    reserv = Reservation()
     # init notification
     notify = Notification()
 
@@ -31,41 +31,58 @@ def InitializeData(request):
         start_date = "22-5-2012"
         end_date = "20-3-2015"
 
-        if(new_reserv.add_new_reservation(22, hotel.hotels_list, customer_id, start_date, end_date)):
+        if(reserv.add_new_reservation(22, hotel.hotels_list, customer_id, start_date, end_date)):
             mes = "<h3 style='color: green'>"
             mes += notify.success_opr(customer1.name, customer1.phone_number, start_date, end_date)
             # bonus message
-            mes += "<br /><br />Refresh page to add more reservations"
-            mes += "</h3>"
+            mes += "</h3><h4>Refresh page to add more reservations</h4>"
     else:
         mes = "<h1 style='color: red'>sorry no rooms available</h1>"
     
     return HttpResponse(mes)
 
 def HotelList(request):
-    """ show list of all saved hotels """
+    """ Return list of all saved hotels """
     hotel = Hotel()
 
     # hotel.get_all_hotels()
     # you told me to use instance directly not an function
     hotel_list = hotel.hotels_list
     
-    hotel_list_output = "<ul>"
+    hotel_list_output = "<h4><ul>"
     for h in hotel_list:
         hotel_list_output += "<li>" + h['name'] + "</li>"
-    hotel_list_output += "</ul>"
+    hotel_list_output += "</ul></h4>"
     return HttpResponse(hotel_list_output)
 
 def HotelInCity(request):
-    """ Show list of all hotels in an city """
+    """ Return list of all hotels in an city """
 
     hotel = Hotel()
 
     # select any city
     hotels_in_city = hotel.get_hotels_in_city('Abu Dhabi')
 
-    output_list = '<ul>'
+    output_list = '<h4><ul>'
     for h in hotels_in_city:
         output_list += "<li>" + h + "</li>"
-    output_list += "</ul>"
+    output_list += "</ul></h4>"
     return HttpResponse(output_list)
+
+def ReservationList(request):
+    """ Return all reservations for a hotel """
+    reserv = Reservation()
+    # this will add an empty customer
+    # but the function will return the right customer
+    customer = Customer('', '')
+
+    # any hotel
+    reservation_list = reserv.get_resevrations_for_hotel(22, customer.customers_list)
+
+    output_list = "<h4><ul>"
+    for r in reservation_list:
+        output_list += "<li>" + r + "</li>"
+    output_list += '</ul></h4>'
+
+    return HttpResponse(output_list)
+
