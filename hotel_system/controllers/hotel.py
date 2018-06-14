@@ -25,7 +25,6 @@ class Hotel:
         hotels_in_city = []
         for hotel in self.hotels_list:
             if hotel['city'] == city:
-                """mes = '{id} ->>> {name} has {total_rooms} total rooms'.format(id= hotel['id'], name= hotel['name'], total_rooms = hotel['total_rooms'])"""
                 hotels_in_city.append(hotel['name'])
         return hotels_in_city
     
