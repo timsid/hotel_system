@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .models import Hotel
-
+from .models import Reservation
 # Create your views here.
 
 def AllHotels(request):
@@ -30,3 +30,14 @@ def HotelInCity(request):
     output += "</ul>"
 
     return HttpResponse(output)
+
+def ReservationList(request):
+    """ Return all reservations for a hotel """
+
+    reserv_list = Reservation.objects.filter(hotel_id= 1)
+    out = "<ul>"
+    for r in reserv_list:
+        out += "<li>{} for: {} ({} - {})".format(r.hotel, r.customer, r.start_time.strftime("%d/%b/%Y %H:%I"), r.end_time.strftime("%d/%b/%Y %H:%I"))
+    out += "</ul>"
+
+    return HttpResponse(out)

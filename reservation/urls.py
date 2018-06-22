@@ -17,8 +17,10 @@ from django.conf.urls import url
 
 from .views import AllHotels
 from .views import HotelInCity
+from .views import ReservationList
 
 urlpatterns = [
     url(r"allhotels", AllHotels),
     url(r"hotelincity", HotelInCity),
+    url(r"reservationlist", ReservationList),
 ]
