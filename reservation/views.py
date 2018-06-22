@@ -18,3 +18,15 @@ def AllHotels(request):
     hotels_list += "</li>"
 
     return HttpResponse(hotels_list)
+
+def HotelInCity(request):
+    """ Return list of all hotels in a given city """
+
+    random_city = "Abu Dhabi"
+    hotels_in_city = Hotel.objects.filter(hotel_city = random_city)
+    output = "<ul>"
+    for h in hotels_in_city:
+        output += "<li>" + h.hotel_name + "</li>"
+    output += "</ul>"
+
+    return HttpResponse(output)

@@ -16,7 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 
 from .views import AllHotels
+from .views import HotelInCity
 
 urlpatterns = [
-    url(r"allhotels", AllHotels)
+    url(r"allhotels", AllHotels),
+    url(r"hotelincity", HotelInCity),
 ]
