@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 def  DefaultView(request):
     """ Show all urls in default page like a navigation """
@@ -15,4 +16,5 @@ def  DefaultView(request):
     </h4>
     """
 
-    return HttpResponse(out)
+    #return HttpResponse(out)
+    return render(request, 'welcome.html')
