@@ -4,53 +4,66 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>{{ page_title }}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="{% static 'css/normalize.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <style>
+            
+        </style>
+        <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
         <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
     </head>
-    <body>
+    <body class="{{ page_class }}">
+      <div class="bgimg">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Hotel System</a>
+              </div>
+          
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a class="{% if page_class == 'hotels' %}active{%endif%}" href="reservation/hotels">Hotels</a></li>
+                  <li><a class="{% if page_class == 'customers' %}active{%endif%}" href="reservation/customers">Customers</a></li>
+                  <li><a class="{% if page_class == 'reservations' %}active{%endif%}" href="reservation/reservations">Reservations</a></li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
 
-        <div class="header-container">
-            <header class="wrapper clearfix">
-                <h1 class="title">h1.title</h1>
-                <nav>
-                    <ul>
-                        <li><a href="#">nav ul li a</a></li>
-                        <li><a href="#">nav ul li a</a></li>
-                        <li><a href="#">nav ul li a</a></li>
-                    </ul>
-                </nav>
-            </header>
+        <div class="jumbotron">
+          <div class="container">
+            {% block header %}
+            {% endblock %}
+          </div>
         </div>
 
-        <div class="main-container">
-            <div class="main wrapper clearfix">
-
-                {% block content %}
-                {% endblock %}
-
-                <aside>
-                    <h3>aside</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices.</p>
-                </aside>
-
-            </div> <!-- #main -->
-        </div> <!-- #main-container -->
-
-        <div class="footer-container">
-            <footer class="wrapper">
-                <h3>footer</h3>
-            </footer>
+        <div class="container">
+          {% block content %}
+          {% endblock %}
         </div>
+      </div>
+      <footer>
+          <p>made with &#9829; by <a href="#">@abo3adel35</a> {% now "Y" %}</p>
+        </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery-1.11.2.min.js" %}"><\/script>')</script>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
 
-        <script src="js/main.js"></script>
+        <script src="{% static 'js/main.js' %}"></script>
     </body>
 </html>
