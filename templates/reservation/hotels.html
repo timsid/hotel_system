@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>All Hotels</h1>
+    <p>This a list with all saved hotels</p>
+{% endblock %}
+
+{% block content %}
+
+    <table class="table table-striped">
+        <thead>
+            <th>#</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Total Rooms</th>
+            <th>Available Rooms</th>
+            <th>ReservNow</th>
+        </thead>
+        <tbody>
+            {% for hotel in hotels %}
+                <tr city="{{hotel.hotel_city}}" class="{% if hotel.empty_rooms < 1 %}danger
+                {% elif hotel.empty_rooms < 5 %}warning
+                {% endif %}">
+                    <td>{{forloop.counter}}</td>
+                    <td>{{hotel.hotel_name}}</td>
+                    <td>{{hotel.hotel_city}}</td>
+                    <td>{{hotel.total_rooms}}</td>
+                    <td>{{hotel.empty_rooms}}</td>
+                    <td>
+                        <button id="{{hotel.id}}" class="btn btn-primary">do nothing</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

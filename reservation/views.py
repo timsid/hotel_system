@@ -19,14 +19,12 @@ def DefaultView(request, addon = ''):
 def AllHotels(request):
     """ Return list of all saved hotels """
 
-    # hotels_list = "<ul>"
-    # for h in Hotel.objects.all():
-    #     hotels_list += "<li>" + h.hotel_name + "</li>"
-    # hotels_list += "</li>"
-
-    #return HttpResponse(hotels_list)
-
-    return render(request, "reservation/index.html", {'hotels': Hotel.objects.all()})
+    return render(request, "reservation/hotels.html", 
+    {
+        'hotels': Hotel.objects.all().order_by('hotel_city'),
+        'page_class': 'hotels',
+        'page_title': 'All Hotels'
+        })
 
 def HotelInCity(request):
     """ Return list of all hotels in a given city """
