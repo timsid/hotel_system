@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>All Reservations</h1>
+    <p>This a list of all reservations for all hotels</p>
+{% endblock %}
+
+{% block content %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Hotel</th>
+                <th>Customer</th>
+                <th>From</th>
+                <th>To</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reserv in reservs %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{reserv.hotel.hote_name}}</td>
+                    <td>{{reserv.customer.name}}</td>
+                    <td>{{reserv.start_time}}</td>
+                    <td>{{reserv.end_time}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

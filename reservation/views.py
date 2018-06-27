@@ -40,10 +40,9 @@ def AllCustomers(request):
 def ReservationList(request):
     """ Return all reservations for a hotel """
 
-    reserv_list = Reservation.objects.filter(hotel_id= 1)
-    out = "<ul>"
-    for r in reserv_list:
-        out += "<li>{} for: {} ({} - {})".format(r.hotel, r.customer, r.start_time.strftime("%d/%b/%Y %H:%I"), r.end_time.strftime("%d/%b/%Y %H:%I"))
-    out += "</ul>"
-
-    return HttpResponse(out)
+    return render(request, 'reservation/reservations.html',
+    {
+        'reservs': Reservation.objects.all(),
+        'page_class': 'reservations',
+        'page_title': 'All Reservations'
+    })
