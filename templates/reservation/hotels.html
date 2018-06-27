@@ -20,7 +20,7 @@
             {% for hotel in hotels %}
                 <tr city="{{hotel.hotel_city}}" class="{% if hotel.empty_rooms < 1 %}danger
                 {% elif hotel.empty_rooms < 5 %}warning
-                {% endif %}">
+                {% endif %}"
                     <td>{{forloop.counter}}</td>
                     <td>{{hotel.hotel_name}}</td>
                     <td>{{hotel.hotel_city}}</td>
