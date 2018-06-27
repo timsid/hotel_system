@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>All Customers</h1>
+    <p>This a list of all saved customers</p>
+{% endblock %}
+
+{% block content %}
+    <table class="table table-striped">
+        <thead>
+            <th>#</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.phone_num}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

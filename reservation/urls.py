@@ -19,7 +19,7 @@ from .views import *
 
 urlpatterns = [
     url(r"allhotels", AllHotels),
-    url(r"hotelincity", HotelInCity),
+    url(r"customers", AllCustomers),
     url(r"reservationlist", ReservationList),
     url("", DefaultView),
 ]
