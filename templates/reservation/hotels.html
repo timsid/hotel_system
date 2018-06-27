@@ -27,7 +27,12 @@
                     <td>{{hotel.total_rooms}}</td>
                     <td>{{hotel.empty_rooms}}</td>
                     <td>
-                        <button id="{{hotel.id}}" class="btn btn-primary">do nothing</button>
+                        <button id="{{hotel.id}}" class="btn btn-primary">
+                            do nothing
+                            {% if hotel.empty_rooms < 5 and hotel.empty_rooms >= 0 %}
+                                <span class="badge primary">limited</span>
+                            {% endif %}
+                        </button>
                     </td>
                 </tr>
             {% endfor %}

@@ -3,6 +3,7 @@ body, html{
     margin: 0;
 }
 footer{
+    display: none;
     background: #2b2b2b;
     color: #fff;
     text-align: center;
@@ -15,6 +16,9 @@ footer a{
     color: #fff;
     text-shadow: 0 1px 5px #fff;
     text-decoration: underline;
+}
+.navbar{
+    border-radius: 0;
 }
 .index .bgimg{
     position: relative;
@@ -36,7 +40,7 @@ footer a{
 .navbar li>a.active{
     border: 1px solid lime;
     border-width: 0 0 2px 0;
-    /* background: rgba(0, 255, 55, 0.1) */
+    background: rgba(0, 255, 55, 0.1)
 }
 .index .jumbotron{
     padding-top: 70px; 
