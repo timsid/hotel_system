@@ -20,6 +20,9 @@ footer a{
 .navbar{
     border-radius: 0;
 }
+.index footer{
+    display: block;
+}
 .index .bgimg{
     position: relative;
     height: 92%;
