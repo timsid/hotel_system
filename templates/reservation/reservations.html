@@ -25,6 +25,14 @@
                     <td>{{reserv.start_time}}</td>
                     <td>{{reserv.end_time}}</td>
                 </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">
+                        <b class="text-danger">
+                            Sorry, no reservations yet
+                        </b>
+                    </td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>

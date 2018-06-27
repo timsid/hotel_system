@@ -19,6 +19,14 @@
                     <td>{{customer.name}}</td>
                     <td>{{customer.phone_num}}</td>
                 </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <b class="text-danger">
+                            Sorry, no saved customers yet
+                        </b>
+                    </td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>

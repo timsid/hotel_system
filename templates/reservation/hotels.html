@@ -20,7 +20,9 @@
             {% for hotel in hotels %}
                 <tr city="{{hotel.hotel_city}}" class="{% if hotel.empty_rooms < 1 %}danger
                 {% elif hotel.empty_rooms < 5 %}warning
-                {% endif %}">
+                {% endif %}" bg="{% ifchanged hotel.hotel_city %}
+                {% cycle 'red' 'blue' 'green' %}
+                {% endifchanged %}">
                     <td>{{forloop.counter}}</td>
                     <td>{{hotel.hotel_name}}</td>
                     <td>{{hotel.hotel_city}}</td>
@@ -35,6 +37,14 @@
                         </button>
                     </td>
                 </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            <b class="text-danger">
+                                Sorry, no saved hotels yet
+                            </b>
+                        </td>
+                    </tr>
             {% endfor %}
         </tbody>
     </table>
